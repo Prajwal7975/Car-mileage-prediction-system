@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -77,11 +77,11 @@
             Seats: parseInt(document.getElementById("seats").value),
             Fuel_Type: document.getElementById("fuel_type").value,
             Transmission: document.getElementById("transmission").value,
-            Owner_Type: document.getElementById("owner_type").value
+            Owner_Type: document.getElementById("owner_type").value,
           };
 
           // Make the POST request to the Flask server
-          fetch("http://localhost:5000/predict", {
+          fetch("https://car-mileage-prediction-system.onrender.com/predict", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
