@@ -1,13 +1,20 @@
+import os
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import joblib
 import pandas as pd
 
+
 app = Flask(__name__)
 CORS(app)
 
 # Load pipeline model
-model = joblib.load("final_mileage_model.pkl")
+
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+model_path = os.path.join(BASE_DIR, "final_mileage_model.pkl")
+
+model = joblib.load(model_path)
 
 @app.route('/predict', methods=['POST'])
 def predict():
