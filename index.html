@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Car Mileage Predictor</title>
+    <link rel="stylesheet" href="style1.css" />
+  </head>
+  <body>
+    <div class="content">
+      <h1>Car Mileage Prediction</h1>
+      <form id="predict-form">
+        <label for="year">Year:</label>
+        <input type="text" id="year" name="year" required /><br /><br />
+
+        <label for="km">Kilometers Driven:</label>
+        <input type="text" id="km" name="km" required /><br /><br />
+
+        <label for="engine">Engine Capacity (CC):</label>
+        <input
+          type="number"
+          id="engine"
+          name="engine"
+          min="1000"
+          max="10000"
+          required
+        /><br /><br />
+
+        <label for="power">Power (BHP):</label>
+        <input type="number" id="power" name="power" required /><br /><br />
+
+        <label for="seats">Seats:</label>
+        <input type="number" id="seats" name="seats" required /><br /><br />
+
+        <label for="fuel_type">Fuel Type:</label>
+        <select id="fuel_type" name="fuel_type" required>
+          <option value="Petrol">Petrol</option>
+          <option value="Diesel">Diesel</option>
+        </select>
+        <br /><br />
+
+        <label for="transmission">Transmission:</label>
+        <select id="transmission" name="transmission" required>
+          <option value="Manual">Manual</option>
+          <option value="Automatic">Automatic</option>
+        </select>
+        <br /><br />
+
+        <label for="owner_type">First Owner:</label>
+        <select id="owner_type" name="owner_type" required>
+          <option value="First">First Owner</option>
+          <option value="Second">Second Owner</option>
+          <option value="Third">Third Owner</option>
+        </select>
+        <br /><br />
+        <br /><br />
+
+        <button type="submit">Predict Mileage</button>
+      </form>
+
+      <h3>Predicted Mileage: <span id="mileage">-</span> km/l</h3>
+    </div>
+
+    <script>
+      document
+        .getElementById("predict-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Gather form data
+          const formData = {
+            Year: parseInt(document.getElementById("year").value),
+
+            Kilometers_Driven: parseFloat(document.getElementById("km").value),
+            Engine: parseFloat(document.getElementById("engine").value),
+            Power: parseFloat(document.getElementById("power").value),
+            Seats: parseInt(document.getElementById("seats").value),
+            Fuel_Type: document.getElementById("fuel_type").value,
+            Transmission: document.getElementById("transmission").value,
+            Owner_Type: document.getElementById("owner_type").value
+          };
+
+          // Make the POST request to the Flask server
+          fetch("http://localhost:5000/predict", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.mileage) {
+                document.getElementById("mileage").textContent =
+                  data.mileage.toFixed(2);
+              } else {
+                alert("Error: " + data.error);
+              }
+            })
+            .catch((error) => {
+              alert("Error in prediction: " + error);
+            });
+        });
+    </script>
+  </body>
+</html>

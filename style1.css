@@ -1,0 +1,182 @@
+/* style1.css */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Raleway:wght@300;600&display=swap");
+
+:root {
+  --primary-color: #ff6b6b;
+  --secondary-color: #4ecdc4;
+  --accent-color: #ffe66d;
+  --light-color: #f7fff7;
+  --dark-color: #292f36;
+  --success-color: #6bcb77;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Raleway", sans-serif;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)),
+    url("https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80")
+      no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  color: var(--light-color);
+}
+
+.content {
+  background-color: rgba(41, 47, 54, 0.9);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  padding: 30px;
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  transition: all 0.3s ease;
+  border: 2px solid var(--accent-color);
+}
+
+.content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.content::-webkit-scrollbar-thumb {
+  background-color: var(--accent-color);
+  border-radius: 4px;
+}
+
+h1 {
+  color: var(--accent-color);
+  text-align: center;
+  margin-bottom: 25px;
+  font-weight: 900;
+  font-family: "Montserrat", sans-serif;
+  font-size: 2.2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+h3 {
+  text-align: center;
+  margin-top: 20px;
+  color: var(--light-color);
+  font-weight: 900;
+  font-size: 1.6rem;
+}
+
+#mileage {
+  color: var(--secondary-color);
+  font-weight: 700;
+  font-size: 1.9rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  font-style: bold;
+}
+
+#predict-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: auto;
+  max-height: 60vh;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+#predict-form::-webkit-scrollbar {
+  width: 6px;
+}
+
+#predict-form::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color);
+  border-radius: 3px;
+}
+
+label {
+  color: var(--light-color);
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: -8px;
+  font-family: "Montserrat", sans-serif;
+}
+
+input,
+select {
+  padding: 12px 15px;
+  border: 2px solid var(--secondary-color);
+  border-radius: 8px;
+  font-family: "Raleway", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.3s;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: var(--dark-color);
+}
+
+input:focus,
+select:focus {
+  border-color: var(--accent-color);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 230, 109, 0.3);
+  background-color: white;
+  transform: scale(1.02);
+}
+
+button {
+  background-color: var(--primary-color);
+  color: var(--dark-color);
+  border: none;
+  padding: 15px;
+  border-radius: 8px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+  background-color: #ff5252;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 7px 15px rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+@media (max-width: 768px) {
+  .content {
+    padding: 20px;
+    max-height: 85vh;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  input,
+  select,
+  button {
+    padding: 10px 12px;
+  }
+
+  label {
+    font-size: 1rem;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+  }
+}
